@@ -1,24 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { keydownListener } from './main';
+import { useGlobal, setGlobal } from 'reactn';
+import { INITIAL_STATE, TState } from './INITIAL_STATE';
+
+setGlobal(INITIAL_STATE);
 
 const App: React.FC = () => {
+  const [kanaBuffer] = useGlobal<TState>("kanaBuffer");
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <p>>うしてけせはときいん</p>
+      <p>>{kanaBuffer}</p>
+      <p>
+        <input type="text" onKeyDown={keydownListener}></input>
+
+      </p>
     </div>
   );
 }
