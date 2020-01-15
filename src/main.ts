@@ -4,11 +4,18 @@ import { ROMA_TO_KANA } from './ROMA_TO_KANA';
 import { getGlobal, setGlobal } from 'reactn';
 import { TState } from './INITIAL_STATE';
 
-
 export const keydownListener = (e: KeyboardEvent) => {
   const global = getGlobal<TState>()
-  console.log(e.key);
   let romaBuffer = global.romaBuffer;
+
+  if (e.key === "Enter") {
+    setGlobal({
+      romaBuffer: "",
+      kanaBuffer: ""
+    })
+    return;
+  }
+
   romaBuffer += e.key;
   const kana = ROMA_TO_KANA[romaBuffer];
   if (kana !== undefined) {
