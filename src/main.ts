@@ -17,8 +17,18 @@ export const keydownListener = (e: KeyboardEvent) => {
     romaBuffer = "";
     setGlobal({ romaBuffer: "" });
     kanaListener(kana);
-    return false;
+    return;
   }
+
+  // 「ん」の扱い
+  if (romaBuffer.length === 2 &&
+    romaBuffer[0] === "n" &&
+    !("aeiouy".includes(romaBuffer[1]))) {
+    kanaListener("ん");
+    setGlobal({ romaBuffer: romaBuffer[1] });
+    return;
+  }
+
   if (!ACCEPTABLE_STATES.includes(romaBuffer)) {
     console.log("error!", romaBuffer, "not acceptable")
     setGlobal({ romaBuffer: romaBuffer + "☹" })

@@ -218,7 +218,7 @@ export const ROMA_TO_KANA: { [key: string]: string } = {
   'wi': 'うぃ',
   'we': 'うぇ',
   'wo': 'を',
-  'n': 'ん',
+  'nn': 'ん',
   "n'": 'ん',
   'dyi': 'でぃ',
   '-': 'ー',
