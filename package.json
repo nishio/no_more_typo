@@ -16,6 +16,8 @@
     "react-scripts": "3.3.0",
     "react-textarea-autosize": "^7.1.2",
     "reactn": "^2.2.4",
+    "redux": "^4.0.5",
+    "redux-devtools-extension": "^2.13.8",
     "typescript": "^3.7.4"
   },
   "scripts": {
