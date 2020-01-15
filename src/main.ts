@@ -7,6 +7,8 @@ import { TState } from './INITIAL_STATE';
 export const keydownListener = (e: KeyboardEvent) => {
   const global = getGlobal<TState>()
   let romaBuffer = global.romaBuffer;
+  (e.target as HTMLInputElement).value = "";
+  e.preventDefault();
 
   if (e.key === "Enter") {
     setGlobal({
@@ -19,10 +21,11 @@ export const keydownListener = (e: KeyboardEvent) => {
   romaBuffer += e.key;
   const kana = ROMA_TO_KANA[romaBuffer];
   if (kana !== undefined) {
-    (e.target as HTMLInputElement).value = "";
-    e.preventDefault();
     romaBuffer = "";
-    setGlobal({ romaBuffer: "" });
+    setGlobal({
+      romaBuffer: "",
+      romaCount: global.romaCount + 1
+    });
     kanaListener(kana);
     return;
   }
@@ -41,7 +44,10 @@ export const keydownListener = (e: KeyboardEvent) => {
     setGlobal({ romaBuffer: romaBuffer + "☹" })
     return;
   }
-  setGlobal({ romaBuffer: romaBuffer })
+  setGlobal({
+    romaBuffer: romaBuffer,
+    romaCount: global.romaCount + 1
+  })
 };
 
 const kanaListener = (kana: string) => {
@@ -52,10 +58,15 @@ const kanaListener = (kana: string) => {
   kanaBuffer += kana;
   if (copyText.startsWith(kanaBuffer)) {
     // OK
-    setGlobal({ kanaBuffer: kanaBuffer })
+    setGlobal({
+      kanaBuffer: kanaBuffer,
+      kanaCount: global.kanaCount + 1
+    })
   } else {
     console.log("error!", kanaBuffer, "not acceptable")
-    setGlobal({ kanaBuffer: kanaBuffer + "☹" })
+    setGlobal({
+      kanaBuffer: kanaBuffer + "☹"
+    })
 
   }
 }

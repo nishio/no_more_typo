@@ -10,6 +10,9 @@ const App: React.FC = () => {
   const [kanaBuffer] = useGlobal<TState>("kanaBuffer");
   const [copyText] = useGlobal<TState>("copyText");
   const [romaBuffer] = useGlobal<TState>("romaBuffer");
+  const [romaCount] = useGlobal<TState>("romaCount");
+  const [kanaCount] = useGlobal<TState>("kanaCount");
+  const message = "";
   return (
     <div className="App">
       <p>>{copyText}</p>
@@ -19,6 +22,9 @@ const App: React.FC = () => {
         <input type="text" onKeyDown={keydownListener}></input>
 
       </p>
+      <p>{message}</p>
+      <p>kanaCount: {kanaCount}</p>
+      <p>romaCount: {romaCount}</p>
     </div>
   );
 }

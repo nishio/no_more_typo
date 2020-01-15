@@ -1,6 +1,8 @@
 export const INITIAL_STATE = {
   romaBuffer: "",
   kanaBuffer: "",
+  romaCount: 0,
+  kanaCount: 0,
   //  copyText: "うしてけせはときいん"
   copyText: "んなんにん"
 
