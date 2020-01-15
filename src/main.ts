@@ -39,7 +39,7 @@ export const keydownListener = (e: KeyboardEvent) => {
   if (!ACCEPTABLE_STATES.includes(romaBuffer)) {
     console.log("error!", romaBuffer, "not acceptable")
     setGlobal({ romaBuffer: romaBuffer + "☹" })
-
+    return;
   }
   setGlobal({ romaBuffer: romaBuffer })
 };
