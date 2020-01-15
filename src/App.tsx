@@ -8,10 +8,13 @@ setGlobal(INITIAL_STATE);
 
 const App: React.FC = () => {
   const [kanaBuffer] = useGlobal<TState>("kanaBuffer");
+  const [copyText] = useGlobal<TState>("copyText");
+  const [romaBuffer] = useGlobal<TState>("romaBuffer");
   return (
     <div className="App">
-      <p>>うしてけせはときいん</p>
+      <p>>{copyText}</p>
       <p>>{kanaBuffer}</p>
+      <p>>{romaBuffer}</p>
       <p>
         <input type="text" onKeyDown={keydownListener}></input>
 

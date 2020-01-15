@@ -1,4 +1,6 @@
 export const INITIAL_STATE = {
-  kanaBuffer: ""
+  romaBuffer: "",
+  kanaBuffer: "",
+  copyText: "うしてけせはときいん"
 };
 export type TState = typeof INITIAL_STATE;
