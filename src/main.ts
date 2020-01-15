@@ -1,20 +1,44 @@
-import { KeyboardEvent } from 'react';
+import { KeyboardEvent, ChangeEvent } from 'react';
 import { ACCEPTABLE_STATES } from './ACCEPTABLE_STATES';
 import { ROMA_TO_KANA } from './ROMA_TO_KANA';
 import { getGlobal, setGlobal } from 'reactn';
 import { TState } from './INITIAL_STATE';
 
+export const clearContents = (e: ChangeEvent | KeyboardEvent) => {
+  (e.target as HTMLInputElement).value = "";
+}
+
+
 export const keydownListener = (e: KeyboardEvent) => {
   const global = getGlobal<TState>()
   let romaBuffer = global.romaBuffer;
-  (e.target as HTMLInputElement).value = "";
+  clearContents(e);
   e.preventDefault();
+  console.log(e);
 
-  if (e.key === "Enter") {
+  if (e.key === "Enter" || (e.ctrlKey === true && e.key === "m")) {
     setGlobal({
       romaBuffer: "",
-      kanaBuffer: ""
+      kanaBuffer: "",
+      phase: "INPUT",
     })
+    if (global.phase === "START" || global.phase === "SUCCESS") {
+      const tests = global.tests.split("\n");
+      if (tests.length === global.test_id) {
+        setGlobal({
+          copyText: "",
+          phase: "FINISHED",
+        })
+      } else {
+        setGlobal({
+          copyText: tests[global.test_id]
+        })
+      }
+    }
+    return;
+  }
+
+  if (global.phase !== "INPUT") {
     return;
   }
 
@@ -41,7 +65,11 @@ export const keydownListener = (e: KeyboardEvent) => {
 
   if (!ACCEPTABLE_STATES.includes(romaBuffer)) {
     console.log("error!", romaBuffer, "not acceptable")
-    setGlobal({ romaBuffer: romaBuffer + "☹" })
+    setGlobal({
+      romaBuffer: romaBuffer + "☹",
+      phase: "FAIL",
+      errorCount: global.errorCount + 1,
+    })
     return;
   }
   setGlobal({
@@ -61,11 +89,19 @@ const kanaListener = (kana: string) => {
     setGlobal({
       kanaBuffer: kanaBuffer,
       kanaCount: global.kanaCount + 1
-    })
+    });
+    if (copyText === kanaBuffer) {
+      setGlobal({
+        phase: "SUCCESS",
+        test_id: global.test_id + 1,
+      });
+    }
   } else {
     console.log("error!", kanaBuffer, "not acceptable")
     setGlobal({
-      kanaBuffer: kanaBuffer + "☹"
+      kanaBuffer: kanaBuffer + "☹",
+      phase: "FAIL",
+      errorCount: global.errorCount + 1,
     })
 
   }
