@@ -69,6 +69,7 @@ export const keydownListener = (e: KeyboardEvent) => {
       romaBuffer: romaBuffer + "☹",
       phase: "FAIL",
       errorCount: global.errorCount + 1,
+      errorLog: global.errorLog.concat([`${global.copyText}: ${global.kanaBuffer}${romaBuffer}`])
     })
     return;
   }
@@ -102,6 +103,7 @@ const kanaListener = (kana: string) => {
       kanaBuffer: kanaBuffer + "☹",
       phase: "FAIL",
       errorCount: global.errorCount + 1,
+      errorLog: global.errorLog.concat([`${global.copyText}: ${kanaBuffer}`])
     })
 
   }
