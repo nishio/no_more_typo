@@ -84,7 +84,7 @@ const GamePane = () => {
     <p>errorCount: {errorCount}</p>
     <p>kanaCount: {kanaCount}</p>
     <p>romaCount: {romaCount}</p>
-    <p>test id: {test_id + 1} / {totalTest}</p>
+    {phase !== "FINISHED" ? <p>test id: {test_id + 1} / {totalTest}</p> : ""}
     <p>preset id: {preset_id}</p>
     <hr></hr>
     <p>Error Log:</p>
