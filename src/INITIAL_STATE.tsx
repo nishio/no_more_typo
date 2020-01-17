@@ -36,7 +36,7 @@ export const preset_tests = new Map([
     kana: true,
   }],
   ["4", {
-    data: "はな\nつよい\nいぬ\nねこ\nばたー\nこうちゃ\nれもんてぃー\nかすたーどけーき\nわえい\nのずる\nさざめき\nへいせい\nぴぺっと\nぱぶりっく\nこみゅにけーしょん\nそふとうぇあ\nふぉーまっと\nぷろぐらみんぐ\nおやゆびしふと\nほーむぽじしょん\nしゔぁしん\nひんどぅー",
+    data: "しゔぁしん\nひんどぅー\nはな\nつよい\nいぬ\nねこ\nばたー\nこうちゃ\nれもんてぃー\nかすたーどけーき\nわえい\nのずる\nさざめき\nへいせい\nぴぺっと\nぱぶりっく\nこみゅにけーしょん\nそふとうぇあ\nふぉーまっと\nぷろぐらみんぐ\nおやゆびしふと\nほーむぽじしょん",
     title: "全文字セット(ゔ含む)",
     kana: true,
   }],
@@ -44,6 +44,11 @@ export const preset_tests = new Map([
     data: "()\n[]\n{}\n\"\"\n'a'\n()=>{}\n1+2\n3*4\n5-6\n7/8\n``\nconst Key:React.FC=()=>{}\n<div id=\"root\"></div>\nlet dict:{[key:string]:number};\nnpx create-react-app quux --typescript\n	styled(JaBox)<{left:number}>`\nwidth :${ KEYBOX_WIDTH }px\nleft: ${ props => props.left}px\n4&5\n6|7\n8^9\nm%n\nx!=0\nx!==null?a:b\nbaz[1, 2, 3][0]\n@\"'\"  # single quote",
     title: "プログラミング",
     kana: false,
+  }],
+  ["6", {
+    data: "こと\nとき\nない\nもの\nでも\nから\nには\nする\nでは\nその\nなら\nこの\nまず、\nぴんく\nます。\nぽぷり\nよって\nをして\nです。\nむねん\nこれは\nまた、\nぎろん\nぺーじ\nとして\nなので\nという\nおうぼ\nゆうやく\nせんめい\nいっぱん\nさいぱん\nくうきょ\nします。\nみっせつ\nわけです\nへいほう\nつうしん\nました。\nちゅうき\nしりえぬ\nふうひょう\nたとえば、\nがあります。",
+    title: "全文字セット(文中頻度考慮)",
+    kana: true,
   }],
 ])
 
