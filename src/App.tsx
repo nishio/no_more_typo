@@ -59,6 +59,7 @@ const GamePane = () => {
         phase: "START",
         tests: preset.data,
         useKana: preset.kana,
+        testTitle: preset.title,
       });
     }
   }, [preset_id])
@@ -78,6 +79,7 @@ const GamePane = () => {
 
     </p>
     <hr></hr>
+    <p>{global.testTitle}</p>
     <p>errorCount: {errorCount}</p>
     {phase === "FINISHED" && errorCount === 0 ? <p>Time: {(Date.now() - global.startTime) / 1000} sec</p> : ""}
     <p>kanaCount: {kanaCount}</p>

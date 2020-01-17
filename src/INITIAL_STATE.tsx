@@ -11,6 +11,7 @@ export const INITIAL_STATE = {
   phase: "START" as TPhase,
   test_id: 0,
   tests: "",
+  testTitle: "",
   errorLog: [] as string[],
   useKana: false,
   startTime: Date.now(),
