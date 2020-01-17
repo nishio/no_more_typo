@@ -42,6 +42,12 @@ export const keydownListener = (e: KeyboardEvent) => {
     return;
   }
 
+  if (!global.useKana) {
+    if (e.key === "Shift") return;
+    kanaListener(e.key);
+    return;
+  }
+
   romaBuffer += e.key;
   const kana = ROMA_TO_KANA[romaBuffer];
   if (kana !== undefined) {

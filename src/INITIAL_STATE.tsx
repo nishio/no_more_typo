@@ -12,7 +12,8 @@ export const INITIAL_STATE = {
   test_id: 0,
   //  tests: "んなんにん\nうしてけせはときいん\nとうきょう\nうちゅう\nけしてする\nせんとう\nはと\nとっきゅう",
   tests: "",
-  errorLog: [] as string[]
+  errorLog: [] as string[],
+  useKana: false,
 };
 export type TState = typeof INITIAL_STATE;
 
@@ -20,19 +21,28 @@ export type TState = typeof INITIAL_STATE;
 export const preset_tests = new Map([
   ["1", {
     data: "はな\nいぬ\nねこ",
-    title: "tinyセット"
+    title: "tinyセット",
+    kana: true,
   }],
   ["2", {
     data: "はな\nつよい\nいぬ\nねこ\nばたー\nこうちゃ\nれもんてぃー\nかすたーどけーき\nわえい\nのずる\nさざめき\nへいせい\nぴぺっと\nぱぶりっく\nこみゅにけーしょん\nそふとうぇあ\nふぉーまっと\nぷろぐらみんぐ\nおやゆびしふと\nほーむぽじしょん",
-    title: "全文字セット"
+    title: "全文字セット",
+    kana: true,
   }],
   ["3", {
     data: "んなんにんにゃん",
-    title: "「ん」のテスト"
+    title: "「ん」のテスト",
+    kana: true,
   }],
   ["4", {
     data: "はな\nつよい\nいぬ\nねこ\nばたー\nこうちゃ\nれもんてぃー\nかすたーどけーき\nわえい\nのずる\nさざめき\nへいせい\nぴぺっと\nぱぶりっく\nこみゅにけーしょん\nそふとうぇあ\nふぉーまっと\nぷろぐらみんぐ\nおやゆびしふと\nほーむぽじしょん\nしゔぁしん\nひんどぅー",
-    title: "全文字セット(ゔ)"
+    title: "全文字セット(ゔ含む)",
+    kana: true,
+  }],
+  ["5", {
+    data: "()\n[]\n{}\n\"\"\n'a'\n()=>{}\n1+2\n3*4\n5-6\n7/8\n``\nconst Key:React.FC=()=>{}\n<div id=\"root\"></div>\nlet dict:{[key:string]:number};\nnpx create-react-app quux --typescript\n	styled(JaBox)<{left:number}>`\nwidth :${ KEYBOX_WIDTH }px\nleft: ${ props => props.left}px\n4&5\n6|7\n8^9\nm%n\nx!=0\nx!==null?a:b\nbaz[1, 2, 3][0]\n@\"'\"  # single quote",
+    title: "プログラミング",
+    kana: false,
   }],
 ])
 

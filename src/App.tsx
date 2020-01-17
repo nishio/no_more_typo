@@ -65,7 +65,10 @@ const GamePane = () => {
     if (preset !== undefined) {
       console.log(tests, preset.data)
       totalTest = preset.data.split("\n").length;
-      setGlobal({ tests: preset.data });
+      setGlobal({
+        tests: preset.data,
+        useKana: preset.kana,
+      });
     }
   }, [preset_id])
 
