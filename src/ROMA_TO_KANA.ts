@@ -256,6 +256,8 @@ export const ROMA_TO_KANA: { [key: string]: string } = {
   'fu': 'ふ',
   'che': 'ちぇ',
   'cche': 'っちぇ',
-  'je': 'じぇ'
+  'je': 'じぇ',
+  ',': '、',
+  '.': '。',
 };
 
