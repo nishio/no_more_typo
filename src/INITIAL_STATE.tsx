@@ -10,7 +10,6 @@ export const INITIAL_STATE = {
   copyText: "",
   phase: "START" as TPhase,
   test_id: 0,
-  //  tests: "んなんにん\nうしてけせはときいん\nとうきょう\nうちゅう\nけしてする\nせんとう\nはと\nとっきゅう",
   tests: "",
   errorLog: [] as string[],
   useKana: false,

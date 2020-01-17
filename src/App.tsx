@@ -1,17 +1,10 @@
-import React, { ChangeEvent, MouseEvent, useEffect, Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
+import { HashRouter, Link, Route, Switch, useParams } from 'react-router-dom';
+import { getGlobal, setGlobal, useGlobal } from 'reactn';
+import styled from 'styled-components';
 import './App.css';
-import { keydownListener, clearContents } from './main';
-import { useGlobal, setGlobal, getGlobal } from 'reactn';
-import { INITIAL_STATE, TState, preset_tests } from './INITIAL_STATE';
-import TextareaAutosize from 'react-textarea-autosize';
-import styled from 'styled-components'
-import { HashRouter, useParams } from 'react-router-dom';
-import {
-  HashRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import { INITIAL_STATE, preset_tests, TState } from './INITIAL_STATE';
+import { clearContents, keydownListener } from './main';
 
 setGlobal(INITIAL_STATE);
 
@@ -22,8 +15,6 @@ const PresetLinks = () => {
     </li>
   );
   return <Fragment>{preset_links}</Fragment>;
-  // <TextareaAutosize>{tests}</TextareaAutosize> <br />
-  // <button onClick={load}>load</button>
 }
 
 let totalTest = 0;
@@ -123,21 +114,5 @@ const LargeP = styled.p`
   font-size: 200%;
 `
 
-const load = (e: any) => {
-  const tests = document.getElementsByTagName("textarea")[0].value;
-  console.log(tests);
-  setGlobal({
-    romaBuffer: "",
-    kanaBuffer: "",
-    romaCount: 0,
-    kanaCount: 0,
-    errorCount: 0,
-    copyText: "",
-    phase: "START",
-    test_id: 0,
-    tests: tests,
-  });
-
-}
 
 export default App;

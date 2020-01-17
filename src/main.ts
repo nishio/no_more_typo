@@ -1,8 +1,8 @@
-import { KeyboardEvent, ChangeEvent } from 'react';
-import { ACCEPTABLE_STATES } from './ACCEPTABLE_STATES';
-import { ROMA_TO_KANA } from './ROMA_TO_KANA';
+import { ChangeEvent, KeyboardEvent } from 'react';
 import { getGlobal, setGlobal } from 'reactn';
+import { ACCEPTABLE_STATES } from './ACCEPTABLE_STATES';
 import { TState } from './INITIAL_STATE';
+import { ROMA_TO_KANA } from './ROMA_TO_KANA';
 
 export const clearContents = (e: ChangeEvent | KeyboardEvent) => {
   (e.target as HTMLInputElement).value = "";
