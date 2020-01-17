@@ -40,6 +40,7 @@ const GamePane = () => {
   const [errorLog] = useGlobal("errorLog");
   let { preset_id } = useParams();
   const global = getGlobal<TState>()
+
   let message = "";
   if (phase === "FAIL") {
     message = "Press [Enter] to restart"
@@ -49,9 +50,6 @@ const GamePane = () => {
   }
   if (phase === "START") {
     message = "Press [Enter] to start"
-    if (tests !== "" && copyText === "") {
-      setCopyText(tests.split("\n")[0])
-    }
   }
   if (phase === "FINISHED") {
     if (errorCount > 0) {
@@ -67,11 +65,18 @@ const GamePane = () => {
       console.log(tests, preset.data)
       totalTest = preset.data.split("\n").length;
       setGlobal({
+        phase: "START",
         tests: preset.data,
         useKana: preset.kana,
       });
     }
   }, [preset_id])
+
+  useEffect(() => {
+    if (phase === "START") {
+      setCopyText(tests.split("\n")[0])
+    }
+  }, [tests])
 
   return (<div className="game-pane">
     <p>{message}</p>
