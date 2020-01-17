@@ -14,6 +14,7 @@ export const INITIAL_STATE = {
   tests: "",
   errorLog: [] as string[],
   useKana: false,
+  startTime: Date.now(),
 };
 export type TState = typeof INITIAL_STATE;
 

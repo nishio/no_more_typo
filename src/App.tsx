@@ -1,7 +1,7 @@
 import React, { ChangeEvent, MouseEvent, useEffect, Fragment } from 'react';
 import './App.css';
 import { keydownListener, clearContents } from './main';
-import { useGlobal, setGlobal } from 'reactn';
+import { useGlobal, setGlobal, getGlobal } from 'reactn';
 import { INITIAL_STATE, TState, preset_tests } from './INITIAL_STATE';
 import TextareaAutosize from 'react-textarea-autosize';
 import styled from 'styled-components'
@@ -39,6 +39,7 @@ const GamePane = () => {
   const [tests] = useGlobal("tests");
   const [errorLog] = useGlobal("errorLog");
   let { preset_id } = useParams();
+  const global = getGlobal<TState>()
   let message = "";
   if (phase === "FAIL") {
     message = "Press [Enter] to restart"
@@ -82,6 +83,7 @@ const GamePane = () => {
     </p>
     <hr></hr>
     <p>errorCount: {errorCount}</p>
+    {phase === "FINISHED" && errorCount === 0 ? <p>Time: {(Date.now() - global.startTime) / 1000} sec</p> : ""}
     <p>kanaCount: {kanaCount}</p>
     <p>romaCount: {romaCount}</p>
     {phase !== "FINISHED" ? <p>test id: {test_id + 1} / {totalTest}</p> : ""}

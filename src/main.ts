@@ -22,6 +22,9 @@ export const keydownListener = (e: KeyboardEvent) => {
       kanaBuffer: "",
       phase: "INPUT",
     })
+    if (global.phase === "START") {
+      global.startTime = Date.now();
+    }
     if (global.phase === "START" || global.phase === "SUCCESS") {
       const tests = global.tests.split("\n");
       if (tests.length === global.test_id) {
